@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, ShieldAlert, UserCheck, Calendar, Menu, X, FileText, AlertTriangle, CheckCircle, GraduationCap, Users, ChevronRight, Download, ArrowLeft, ExternalLink, Printer } from 'lucide-react';
+import { BookOpen, ShieldAlert, UserCheck, Calendar, Menu, X, FileText, Users, ChevronRight, Download, ArrowLeft } from 'lucide-react';
 
 const PortalTataTertib = () => {
   const [activeTab, setActiveTab] = useState('home');
@@ -20,23 +20,8 @@ const PortalTataTertib = () => {
   // Link Google Drive File Asli
   const DRIVE_LINK = "https://drive.google.com/file/d/1mOFoNuwdyNelVtM0kekzlH_qerc_WxpI/view?usp=sharing";
   
-  // BRAND COLORS (Dari Panduan Branding)
-  const colors = {
-    primary: '#049229', // Forest Green
-    secondary: '#ffd700', // Gold
-    accent: '#FF6700', // Pumpkin
-    textDark: '#1A1A1A',
-    textLight: '#FFFFFF',
-    bgLight: '#F9FAFB', // Sangat muda
-    bgPrimaryLight: '#E8F5E9', // Hijau muda untuk aksen
-    bgSecondaryLight: '#FFFDE7', // Kuning muda
-    bgAccentLight: '#FFF3E0', // Oranye muda
-    borderLight: '#E5E7EB',
-  };
-
   // Style object untuk font family agar aman
   const fontStyle = { fontFamily: "'Poppins', sans-serif" };
-
 
   // DATA BUKU PEDOMAN LENGKAP
   const handbookChapters = [
@@ -141,12 +126,12 @@ const PortalTataTertib = () => {
       case 'home':
         return (
           <div className="space-y-8 animate-fadeIn" style={fontStyle}>
-            <div className={`text-center space-y-4 py-10 bg-gradient-to-b from-white to-[${colors.bgPrimaryLight}] rounded-2xl p-6 border border-[${colors.borderLight}] shadow-sm`}>
-              <h1 className={`text-3xl md:text-4xl font-bold text-[${colors.primary}]`}>
+            <div className="text-center space-y-4 py-10 bg-gradient-to-b from-white to-[#E8F5E9] rounded-2xl p-6 border border-[#E5E7EB] shadow-sm">
+              <h1 className="text-3xl md:text-4xl font-bold text-[#049229]">
                 Portal Tata Tertib Siswa
               </h1>
-              <h2 className={`text-xl text-[${colors.textDark}] font-semibold`}>SMP YPS SINGKOLE</h2>
-              <p className={`text-[${colors.textDark}] opacity-80 max-w-2xl mx-auto mt-4`}>
+              <h2 className="text-xl text-[#1A1A1A] font-semibold">SMP YPS SINGKOLE</h2>
+              <p className="text-[#1A1A1A] opacity-80 max-w-2xl mx-auto mt-4">
                 "Kami tidak menghukum, kami membina."<br/>
                 Pahami alur penanganan kasus dari tingkat Kelas hingga Sekolah.
               </p>
@@ -154,40 +139,40 @@ const PortalTataTertib = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
                 <button 
                   onClick={() => setActiveTab('walikelas')}
-                  className={`group flex flex-col items-center p-6 bg-white border-2 border-[${colors.borderLight}] rounded-xl hover:border-[${colors.primary}] hover:shadow-md transition cursor-pointer`}
+                  className="group flex flex-col items-center p-6 bg-white border-2 border-[#E5E7EB] rounded-xl hover:border-[#049229] hover:shadow-md transition cursor-pointer"
                 >
-                  <Users size={40} className={`text-[${colors.primary}] mb-3 group-hover:scale-110 transition`}/>
-                  <h3 className={`font-bold text-lg text-[${colors.textDark}]`}>Tingkat Wali Kelas</h3>
+                  <Users size={40} className="text-[#049229] mb-3 group-hover:scale-110 transition"/>
+                  <h3 className="font-bold text-lg text-[#1A1A1A]">Tingkat Wali Kelas</h3>
                   <p className="text-sm text-gray-500">Penanganan Internal & Kekeluargaan</p>
                 </button>
 
                 <button 
                   onClick={() => setActiveTab('sekolah')}
-                  className={`group flex flex-col items-center p-6 bg-white border-2 border-[${colors.borderLight}] rounded-xl hover:border-[${colors.accent}] hover:shadow-md transition cursor-pointer`}
+                  className="group flex flex-col items-center p-6 bg-white border-2 border-[#E5E7EB] rounded-xl hover:border-[#FF6700] hover:shadow-md transition cursor-pointer"
                 >
-                  <ShieldAlert size={40} className={`text-[${colors.accent}] mb-3 group-hover:scale-110 transition`}/>
-                  <h3 className={`font-bold text-lg text-[${colors.textDark}]`}>Tingkat Sekolah (PK)</h3>
+                  <ShieldAlert size={40} className="text-[#FF6700] mb-3 group-hover:scale-110 transition"/>
+                  <h3 className="font-bold text-lg text-[#1A1A1A]">Tingkat Sekolah (PK)</h3>
                   <p className="text-sm text-gray-500">Penanganan Formal & Sanksi Tegas</p>
                 </button>
               </div>
             </div>
 
             {/* Jadwal Seragam Mini */}
-            <div className={`bg-white rounded-xl shadow-sm border border-[${colors.borderLight}] p-4 flex flex-col md:flex-row items-center justify-between gap-4`}>
+            <div className="bg-white rounded-xl shadow-sm border border-[#E5E7EB] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className={`bg-[${colors.bgPrimaryLight}] p-2 rounded-lg text-[${colors.primary}]`}>
+                <div className="bg-[#E8F5E9] p-2 rounded-lg text-[#049229]">
                   <UserCheck size={24} />
                 </div>
                 <div>
-                  <h3 className={`font-bold text-[${colors.textDark}]`}>Cek Seragam Hari Ini</h3>
+                  <h3 className="font-bold text-[#1A1A1A]">Cek Seragam Hari Ini</h3>
                   <p className="text-xs text-gray-500">Pastikan atribut lengkap!</p>
                 </div>
               </div>
               <div className="flex gap-2 text-xs font-medium overflow-x-auto w-full md:w-auto">
                 <span className="bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">Senin-Selasa: Putih Biru</span>
-                <span className={`bg-[${colors.bgPrimaryLight}] text-[${colors.primary}] px-3 py-1 rounded-full whitespace-nowrap`}>Rabu: Kotak-kotak</span>
+                <span className="bg-[#E8F5E9] text-[#049229] px-3 py-1 rounded-full whitespace-nowrap">Rabu: Kotak-kotak</span>
                 <span className="bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">Kamis: Kaos Sekolah</span>
-                <span className={`bg-[${colors.bgAccentLight}] text-[${colors.accent}] px-3 py-1 rounded-full whitespace-nowrap`}>Jumat: Pramuka</span>
+                <span className="bg-[#FFF3E0] text-[#FF6700] px-3 py-1 rounded-full whitespace-nowrap">Jumat: Pramuka</span>
               </div>
             </div>
           </div>
@@ -196,19 +181,19 @@ const PortalTataTertib = () => {
       case 'walikelas':
         return (
           <div className="space-y-8 animate-fadeIn" style={fontStyle}>
-            <div className={`bg-[${colors.bgPrimaryLight}] p-6 rounded-2xl border border-[${colors.primary}] bg-opacity-20`}>
-              <h2 className={`text-2xl font-bold text-[${colors.primary}] mb-2 flex items-center gap-2`}>
+            <div className="bg-[#E8F5E9] p-6 rounded-2xl border border-[#049229] bg-opacity-20">
+              <h2 className="text-2xl font-bold text-[#049229] mb-2 flex items-center gap-2">
                 <Users />
                 Penanganan Tingkat Wali Kelas
               </h2>
-              <p className={`text-[${colors.primary}]`}>
+              <p className="text-[#049229]">
                 Sebelum masuk ke BK/Sekolah, pelanggaran ringan akan dibina terlebih dahulu oleh Wali Kelas melalui 3 Tahapan Level.
               </p>
             </div>
 
             {/* 5 Kategori */}
             <div>
-              <h3 className={`text-lg font-bold text-[${colors.textDark}] mb-4`}>5 Jenis Pelanggaran Kelas</h3>
+              <h3 className="text-lg font-bold text-[#1A1A1A] mb-4">5 Jenis Pelanggaran Kelas</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {violationCategories.map((cat) => (
                   <div key={cat.id} className={`p-4 rounded-xl border ${cat.color} hover:shadow-md transition bg-white`}>
@@ -222,15 +207,15 @@ const PortalTataTertib = () => {
 
             {/* Alur Level 1-3 */}
             <div className="space-y-4">
-              <h3 className={`text-lg font-bold text-[${colors.textDark}]`}>Alur Sanksi Berjenjang</h3>
+              <h3 className="text-lg font-bold text-[#1A1A1A]">Alur Sanksi Berjenjang</h3>
               
               <div className="relative border-l-4 border-gray-200 pl-6 ml-2 space-y-8">
                 {/* Level 1 */}
                 <div className="relative">
-                  <div className={`absolute -left-[34px] bg-[${colors.secondary}] w-6 h-6 rounded-full border-4 border-white shadow-sm`}></div>
+                  <div className="absolute -left-[34px] bg-[#ffd700] w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
                   <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                    <span className={`bg-[${colors.bgSecondaryLight}] text-[${colors.secondary}] text-xs font-bold px-2 py-1 rounded mb-2 inline-block`}>LEVEL 1</span>
-                    <h4 className={`font-bold text-[${colors.textDark}]`}>Teguran & Refleksi</h4>
+                    <span className="bg-[#FFFDE7] text-[#ffd700] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 1</span>
+                    <h4 className="font-bold text-[#1A1A1A]">Teguran & Refleksi</h4>
                     <p className="text-sm text-gray-600 mt-1">Siswa mengisi Lembar Refleksi Diri. Tidak ada surat ke orang tua.</p>
                     <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
                       <Calendar size={12}/> Masa Pantau: 1 Pekan
@@ -240,10 +225,10 @@ const PortalTataTertib = () => {
 
                 {/* Level 2 */}
                 <div className="relative">
-                  <div className={`absolute -left-[34px] bg-[${colors.accent}] w-6 h-6 rounded-full border-4 border-white shadow-sm`}></div>
+                  <div className="absolute -left-[34px] bg-[#FF6700] w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
                   <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                    <span className={`bg-[${colors.bgAccentLight}] text-[${colors.accent}] text-xs font-bold px-2 py-1 rounded mb-2 inline-block`}>LEVEL 2</span>
-                    <h4 className={`font-bold text-[${colors.textDark}]`}>Pemberitahuan Orang Tua</h4>
+                    <span className="bg-[#FFF3E0] text-[#FF6700] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 2</span>
+                    <h4 className="font-bold text-[#1A1A1A]">Pemberitahuan Orang Tua</h4>
                     <p className="text-sm text-gray-600 mt-1">Surat pemberitahuan dikirim ke rumah untuk ditandatangani orang tua (Tanpa panggilan).</p>
                     <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
                       <Calendar size={12}/> Masa Pantau: 2 Pekan
@@ -256,7 +241,7 @@ const PortalTataTertib = () => {
                   <div className="absolute -left-[34px] bg-red-500 w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
                   <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
                     <span className="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 3</span>
-                    <h4 className={`font-bold text-[${colors.textDark}]`}>Panggilan & Komitmen</h4>
+                    <h4 className="font-bold text-[#1A1A1A]">Panggilan & Komitmen</h4>
                     <p className="text-sm text-gray-600 mt-1">Orang tua WAJIB datang ke sekolah. Menandatangani Perjanjian Komitmen Terakhir.</p>
                     <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
                       <Calendar size={12}/> Masa Pantau: 3 Pekan
@@ -265,7 +250,7 @@ const PortalTataTertib = () => {
                 </div>
               </div>
               
-              <div className={`bg-red-50 p-4 rounded-lg border border-red-200 text-center text-red-800 text-sm font-semibold`}>
+              <div className="bg-red-50 p-4 rounded-lg border border-red-200 text-center text-red-800 text-sm font-semibold">
                 ⚠️ Jika Level 3 dilanggar, kasus otomatis naik ke Tingkat Sekolah (PK-I)
               </div>
             </div>
@@ -275,7 +260,7 @@ const PortalTataTertib = () => {
       case 'sekolah':
         return (
           <div className="space-y-6 animate-fadeIn" style={fontStyle}>
-             <div className={`bg-[${colors.accent}] text-white p-6 rounded-2xl shadow-lg`}>
+             <div className="bg-[#FF6700] text-white p-6 rounded-2xl shadow-lg">
               <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
                 <ShieldAlert />
                 Tingkat Sekolah (Formal)
@@ -287,10 +272,10 @@ const PortalTataTertib = () => {
 
             <div className="grid gap-6 md:grid-cols-2">
               {/* PK 1 */}
-              <div className={`bg-white p-6 rounded-2xl border-l-4 border-[${colors.secondary}] shadow-sm`}>
+              <div className="bg-white p-6 rounded-2xl border-l-4 border-[#ffd700] shadow-sm">
                 <div className="flex justify-between items-center mb-3">
-                   <h3 className={`text-xl font-bold text-[${colors.textDark}]`}>PK-I</h3>
-                   <span className={`bg-[${colors.bgSecondaryLight}] text-[${colors.secondary}] px-3 py-1 rounded-full text-xs font-bold`}>Teguran Tertulis</span>
+                   <h3 className="text-xl font-bold text-[#1A1A1A]">PK-I</h3>
+                   <span className="bg-[#FFFDE7] text-[#ffd700] px-3 py-1 rounded-full text-xs font-bold">Teguran Tertulis</span>
                 </div>
                 <p className="text-gray-600 text-sm mb-4">Diberikan jika Level 3 Wali Kelas gagal, atau pelanggaran disiplin sekolah (Terlambat {'>'}3x).</p>
                 <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
@@ -299,10 +284,10 @@ const PortalTataTertib = () => {
               </div>
 
               {/* PK 2 */}
-              <div className={`bg-white p-6 rounded-2xl border-l-4 border-[${colors.accent}] shadow-sm`}>
+              <div className="bg-white p-6 rounded-2xl border-l-4 border-[#FF6700] shadow-sm">
                 <div className="flex justify-between items-center mb-3">
-                   <h3 className={`text-xl font-bold text-[${colors.textDark}]`}>PK-II</h3>
-                   <span className={`bg-[${colors.bgAccentLight}] text-[${colors.accent}] px-3 py-1 rounded-full text-xs font-bold`}>Peringatan Keras</span>
+                   <h3 className="text-xl font-bold text-[#1A1A1A]">PK-II</h3>
+                   <span className="bg-[#FFF3E0] text-[#FF6700] px-3 py-1 rounded-full text-xs font-bold">Peringatan Keras</span>
                 </div>
                 <p className="text-gray-600 text-sm mb-4">Eskalasi dari PK-I. Orang tua dipanggil oleh Kesiswaan/BK.</p>
                 <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
@@ -313,7 +298,7 @@ const PortalTataTertib = () => {
               {/* PK 3 */}
               <div className="bg-white p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
                 <div className="flex justify-between items-center mb-3">
-                   <h3 className={`text-xl font-bold text-[${colors.textDark}]`}>PK-III</h3>
+                   <h3 className="text-xl font-bold text-[#1A1A1A]">PK-III</h3>
                    <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-bold">Sidang Komdis</span>
                 </div>
                 <p className="text-gray-600 text-sm mb-4">Kasus ditangani Komisi Disiplin. Orang tua menghadap Wakasek Kesiswaan.</p>
@@ -342,33 +327,33 @@ const PortalTataTertib = () => {
           <div className="animate-fadeIn space-y-6" style={fontStyle}>
             {selectedChapter ? (
               // Tampilan Detail Bab (Reader Mode)
-              <div className={`bg-white rounded-2xl shadow-sm border border-[${colors.borderLight}] overflow-hidden`}>
-                 <div className={`bg-[${colors.bgPrimaryLight}] p-4 border-b border-[${colors.primary}] bg-opacity-20 flex items-center gap-2`}>
+              <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] overflow-hidden">
+                 <div className="bg-[#E8F5E9] p-4 border-b border-[#049229] bg-opacity-20 flex items-center gap-2">
                    <button 
                     onClick={() => setSelectedChapter(null)}
-                    className={`p-2 hover:bg-[${colors.primary}] hover:bg-opacity-10 rounded-full transition text-[${colors.primary}]`}
+                    className="p-2 hover:bg-[#049229] hover:bg-opacity-10 rounded-full transition text-[#049229]"
                    >
                      <ArrowLeft size={20}/>
                    </button>
-                   <h3 className={`font-bold text-[${colors.primary}]`}>{selectedChapter.title}</h3>
+                   <h3 className="font-bold text-[#049229]">{selectedChapter.title}</h3>
                  </div>
                  <div className="p-6 md:p-8">
-                   <p className={`whitespace-pre-wrap leading-relaxed text-[${colors.textDark}] text-base`}>
+                   <p className="whitespace-pre-wrap leading-relaxed text-[#1A1A1A] text-base">
                      {selectedChapter.content}
                    </p>
                  </div>
-                 <div className={`p-4 bg-gray-50 border-t border-[${colors.borderLight}] text-center`}>
-                   <button onClick={() => setSelectedChapter(null)} className={`text-[${colors.primary}] font-medium hover:underline`}>
+                 <div className="p-4 bg-gray-50 border-t border-[#E5E7EB] text-center">
+                   <button onClick={() => setSelectedChapter(null)} className="text-[#049229] font-medium hover:underline">
                      Kembali ke Daftar Isi
                    </button>
                  </div>
               </div>
             ) : (
               // Tampilan Daftar Isi
-              <div className={`bg-white p-8 rounded-2xl shadow-sm border border-[${colors.borderLight}]`}>
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#E5E7EB]">
                 <div className="text-center mb-8">
-                  <FileText size={64} className={`mx-auto text-[${colors.primary}] mb-4`} />
-                  <h2 className={`text-2xl font-bold text-[${colors.textDark}] mb-2`}>Buku Saku Digital</h2>
+                  <FileText size={64} className="mx-auto text-[#049229] mb-4" />
+                  <h2 className="text-2xl font-bold text-[#1A1A1A] mb-2">Buku Saku Digital</h2>
                   <p className="text-gray-600">
                     Baca aturan sekolah langsung di sini atau unduh untuk disimpan.
                   </p>
@@ -379,20 +364,20 @@ const PortalTataTertib = () => {
                     <button 
                       key={chapter.id}
                       onClick={() => setSelectedChapter(chapter)}
-                      className={`flex items-center justify-between p-4 rounded-xl border border-[${colors.borderLight}] hover:bg-[${colors.bgPrimaryLight}] hover:border-[${colors.primary}] transition group text-left bg-white`}
+                      className="flex items-center justify-between p-4 rounded-xl border border-[#E5E7EB] hover:bg-[#E8F5E9] hover:border-[#049229] transition group text-left bg-white"
                     >
-                      <span className={`font-medium text-[${colors.textDark}] group-hover:text-[${colors.primary}]`}>{chapter.title}</span>
-                      <ChevronRight className={`text-gray-300 group-hover:text-[${colors.primary}]`} size={20}/>
+                      <span className="font-medium text-[#1A1A1A] group-hover:text-[#049229]">{chapter.title}</span>
+                      <ChevronRight className="text-gray-300 group-hover:text-[#049229]" size={20}/>
                     </button>
                   ))}
                 </div>
                 
-                <div className={`flex flex-col md:flex-row justify-center gap-4 border-t border-[${colors.borderLight}] pt-6`}>
+                <div className="flex flex-col md:flex-row justify-center gap-4 border-t border-[#E5E7EB] pt-6">
                   <a 
                     href={DRIVE_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`bg-[${colors.primary}] text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform active:scale-95`}
+                    className="bg-[#049229] text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform active:scale-95"
                   >
                     <Download size={20}/>
                     Download File PDF Asli
@@ -412,22 +397,21 @@ const PortalTataTertib = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-[${colors.bgLight}] text-[${colors.textDark}] pb-20 md:pb-0`} style={fontStyle}>
+    <div className="min-h-screen bg-[#F9FAFB] text-[#1A1A1A] pb-20 md:pb-0" style={fontStyle}>
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            {/* LOGO & KOTAK YPS DIHAPUS */}
             <div>
-              <h1 className={`font-bold text-lg leading-tight text-[${colors.primary}]`}>SMP YPS SINGKOLE</h1>
+              <h1 className="font-bold text-lg leading-tight text-[#049229]">SMP YPS SINGKOLE</h1>
               <p className="text-xs text-gray-500">Portal Tata Tertib</p>
             </div>
           </div>
           
           <nav className="hidden md:flex gap-6">
-            <button onClick={() => setActiveTab('home')} className={`font-medium transition ${activeTab === 'home' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Beranda</button>
-            <button onClick={() => setActiveTab('walikelas')} className={`font-medium transition ${activeTab === 'walikelas' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Wali Kelas</button>
-            <button onClick={() => setActiveTab('sekolah')} className={`font-medium transition ${activeTab === 'sekolah' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Sekolah</button>
-            <button onClick={() => setActiveTab('pedoman')} className={`font-medium transition ${activeTab === 'pedoman' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Buku Saku</button>
+            <button onClick={() => setActiveTab('home')} className={`font-medium transition ${activeTab === 'home' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Beranda</button>
+            <button onClick={() => setActiveTab('walikelas')} className={`font-medium transition ${activeTab === 'walikelas' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Wali Kelas</button>
+            <button onClick={() => setActiveTab('sekolah')} className={`font-medium transition ${activeTab === 'sekolah' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Sekolah</button>
+            <button onClick={() => setActiveTab('pedoman')} className={`font-medium transition ${activeTab === 'pedoman' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Buku Saku</button>
           </nav>
 
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -450,10 +434,10 @@ const PortalTataTertib = () => {
       </main>
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-between z-40">
-        <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center gap-1 ${activeTab === 'home' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><BookOpen size={20} /><span className="text-xs">Home</span></button>
-        <button onClick={() => setActiveTab('walikelas')} className={`flex flex-col items-center gap-1 ${activeTab === 'walikelas' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><Users size={20} /><span className="text-xs">Kelas</span></button>
-        <button onClick={() => setActiveTab('sekolah')} className={`flex flex-col items-center gap-1 ${activeTab === 'sekolah' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><ShieldAlert size={20} /><span className="text-xs">Sekolah</span></button>
-        <button onClick={() => setActiveTab('pedoman')} className={`flex flex-col items-center gap-1 ${activeTab === 'pedoman' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><FileText size={20} /><span className="text-xs">Buku</span></button>
+        <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center gap-1 ${activeTab === 'home' ? 'text-[#049229]' : 'text-gray-400'}`}><BookOpen size={20} /><span className="text-xs">Home</span></button>
+        <button onClick={() => setActiveTab('walikelas')} className={`flex flex-col items-center gap-1 ${activeTab === 'walikelas' ? 'text-[#049229]' : 'text-gray-400'}`}><Users size={20} /><span className="text-xs">Kelas</span></button>
+        <button onClick={() => setActiveTab('sekolah')} className={`flex flex-col items-center gap-1 ${activeTab === 'sekolah' ? 'text-[#049229]' : 'text-gray-400'}`}><ShieldAlert size={20} /><span className="text-xs">Sekolah</span></button>
+        <button onClick={() => setActiveTab('pedoman')} className={`flex flex-col items-center gap-1 ${activeTab === 'pedoman' ? 'text-[#049229]' : 'text-gray-400'}`}><FileText size={20} /><span className="text-xs">Buku</span></button>
       </div>
     </div>
   );
