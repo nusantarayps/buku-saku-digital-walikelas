@@ -6,7 +6,7 @@ const PortalTataTertib = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState(null);
 
-  // Efek untuk memuat Google Font Poppins secara dinamis
+  // Load Google Font
   useEffect(() => {
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
@@ -17,13 +17,24 @@ const PortalTataTertib = () => {
     };
   }, []);
 
-  // Link Google Drive File Asli
   const DRIVE_LINK = "https://drive.google.com/file/d/1mOFoNuwdyNelVtM0kekzlH_qerc_WxpI/view?usp=sharing";
   
-  // Style object untuk font family agar aman
-  const fontStyle = { fontFamily: "'Poppins', sans-serif" };
+  // BRAND COLORS (Hardcoded for stability)
+  const c = {
+    primary: '#049229', // Forest Green
+    secondary: '#ffd700', // Gold
+    accent: '#FF6700', // Pumpkin
+    text: '#1A1A1A',
+    bg: '#F9FAFB',
+    lightPrimary: '#E8F5E9',
+    lightSecondary: '#FFFDE7',
+    lightAccent: '#FFF3E0',
+    border: '#E5E7EB'
+  };
 
-  // DATA BUKU PEDOMAN LENGKAP
+  const fontFamily = "'Poppins', sans-serif";
+
+  // DATA CONTENT
   const handbookChapters = [
     {
       id: "intro",
@@ -43,7 +54,7 @@ const PortalTataTertib = () => {
     {
       id: 2,
       title: "BAB II: TATA KRAMA (Pasal 1-3)",
-      content: `PASAL 1: PERILAKU TERHADAP GURU DAN PEGAWAI SEKOLAH\n1. Berkomunikasi dengan sopan dan santun.\n2. Menyapa dan memberi salam saat bertemu.\n3. Mengucapkan "maaf" jika melakukan kesalahan, baik disengaja maupun tidak disengaja.\n4. Mengucapkan "tolong" ketika meminta bantuan.\n5. Mengucapkan "terima kasih" setelah menerima bantuan.\n6. Menjaga sikap tubuh seperti berdiri atau duduk dengan baik saat berbicara.\n7. Menghormati privasi dan menjaga kerahasiaan.\n8. Berkomunikasi melalui media memperhatikan: salam, perkenalan, izin, bahasa formal, waktu tepat, jelas, dan berterima kasih.\n\nPASAL 2: INTERAKSI DAN PERILAKU ANTARMURID\n1. Menjunjung tinggi nilai utama YPS: Jujur, Tanggung jawab, Peduli, Berani, Menghormati, Pantang menyerah.\n2. Berkomunikasi dengan sopan dan santun.\n3. Menyapa dan memberi salam saat bertemu.\n4. Mengucapkan "maaf", "tolong", dan "terima kasih".\n5. Menjaga sikap tubuh.\n6. Menghormati privasi.\n7. Menghindari konflik.\n8. Berkontribusi dalam kerja kolaborasi.\n9. Mematuhi adab dalam meminjam/meminta sesuatu.\n10. Memanggil teman sesuai dengan namanya.\n11. Membantu teman yang kesulitan.\n\nPASAL 3: PERILAKU TERHADAP TAMU\n1. Menyambut tamu dengan salam, sapa ramah, dan hormat.\n2. Mendengarkan dengan sopan dan membantu tamu.\n3. Menjaga kenyamanan tamu.\n4. Memberikan informasi jujur dan akurat.\n5. Menjaga rahasia dan privasi.\n6. Melaporkan hal-hal tidak biasa.\n7. Mengucapkan salam perpisahan saat tamu pulang.`
+      content: `PASAL 1: PERILAKU TERHADAP GURU DAN PEGAWAI SEKOLAH\n1. Berkomunikasi dengan sopan dan santun.\n2. Menyapa dan memberi salam saat bertemu.\n3. Mengucapkan "maaf" jika melakukan kesalahan, baik disengaja maupun tidak disengaja.\n4. Mengucapkan "tolong" ketika meminta bantuan.\n5. Mengucapkan "terima kasih" setelah menerima bantuan.\n6. Menjaga sikap tubuh seperti berdiri atau duduk dengan baik saat berbicara.\n7. Menghormati privasi dan menjaga kerahasiaan.\n8. Berkomunikasi melalui media memperhatikan: salam, perkenalan, izin, bahasa formal, waktu tepat, jelas, dan berterima kasih.\n\nPASAL 2: INTERAKSI DAN PERILAKU ANTARMURID\n1. Menjunjung tinggi nilai utama YPS: Jujur, Tanggung jawab, Peduli, Berani, Menghormati, Pantang menyerah.\n2. Berkomunikasi dengan sopan dan santun.\n3. Menyapa dan memberi salam saat bertemu.\n4. Mengucapkan "maaf", "tolong", dan "terima kasih".\n5. Menjaga sikap tubuh.\n6. Menghormati privasi.\n7. Menghindari konflik.\n8. Berkontribusi dalam kerja kolaborasi.\n9. Mematuhi adab dalam meminjam/meminta sesuatu.\n10. Memanggil teman sesuai dengan namanya.\n11. Membantu teman yang kesulitan.\n\nPASAL 3: PERILAKU TERHADAP TAMU\n1. Menyambut tamu dengan salam, sapa ramah, dan hormat.\n2. Mendengarkan dengan sopan dan membantu tamu.\n3. Menjaga kenyamanan tamu.\n4. Memberikan informasi jujur dan akurat.\n5. Menjaga rahasia dan privasi.\n6. Melaporkan hal-hal yang tidak biasa.\n7. Mengucapkan salam perpisahan saat tamu pulang.`
     },
     {
       id: 3,
@@ -82,42 +93,41 @@ const PortalTataTertib = () => {
     }
   ];
 
-  // 5 Kategori Pelanggaran
   const violationCategories = [
     {
       id: 'sopan',
       title: 'Sopan Santun',
       icon: '🙏',
       desc: 'Berbicara kasar, membantah guru, sikap tubuh tidak sopan.',
-      color: 'bg-emerald-100 text-emerald-800 border-emerald-200'
+      color: 'bg-emerald-100 border-emerald-200 text-emerald-800'
     },
     {
       id: 'tanggungjawab',
       title: 'Tanggung Jawab',
       icon: '🧹',
       desc: 'Tidak piket, membuang sampah sembarangan, merusak fasilitas.',
-      color: 'bg-blue-100 text-blue-800 border-blue-200'
+      color: 'bg-blue-100 border-blue-200 text-blue-800'
     },
     {
       id: 'peduli',
       title: 'Peduli (Anti-Bullying)',
       icon: '🤝',
       desc: 'Mengejek teman, menyembunyikan barang, mengucilkan.',
-      color: 'bg-purple-100 text-purple-800 border-purple-200'
+      color: 'bg-purple-100 border-purple-200 text-purple-800'
     },
     {
       id: 'disiplin',
       title: 'Disiplin & Ketertiban',
       icon: '⏰',
       desc: 'Terlambat, main HP tanpa izin, ribut di kelas.',
-      color: 'bg-orange-100 text-orange-800 border-orange-200'
+      color: 'bg-orange-100 border-orange-200 text-orange-800'
     },
     {
       id: 'jujur',
       title: 'Kejujuran',
       icon: '🛡️',
       desc: 'Menyontek, berbohong, memalsukan tanda tangan.',
-      color: 'bg-rose-100 text-rose-800 border-rose-200'
+      color: 'bg-rose-100 border-rose-200 text-rose-800'
     }
   ];
 
@@ -125,13 +135,19 @@ const PortalTataTertib = () => {
     switch (activeTab) {
       case 'home':
         return (
-          <div className="space-y-8 animate-fadeIn" style={fontStyle}>
-            <div className="text-center space-y-4 py-10 bg-gradient-to-b from-white to-[#E8F5E9] rounded-2xl p-6 border border-[#E5E7EB] shadow-sm">
-              <h1 className="text-3xl md:text-4xl font-bold text-[#049229]">
+          <div className="space-y-8 animate-fadeIn" style={{fontFamily}}>
+            <div 
+              className="text-center space-y-4 py-10 rounded-2xl p-6 border shadow-sm"
+              style={{
+                background: `linear-gradient(to bottom, #ffffff, ${c.lightPrimary})`,
+                borderColor: c.border
+              }}
+            >
+              <h1 className="text-3xl md:text-4xl font-bold" style={{color: c.primary}}>
                 Portal Tata Tertib Siswa
               </h1>
-              <h2 className="text-xl text-[#1A1A1A] font-semibold">SMP YPS SINGKOLE</h2>
-              <p className="text-[#1A1A1A] opacity-80 max-w-2xl mx-auto mt-4">
+              <h2 className="text-xl font-semibold" style={{color: c.text}}>SMP YPS SINGKOLE</h2>
+              <p className="opacity-80 max-w-2xl mx-auto mt-4" style={{color: c.text}}>
                 "Kami tidak menghukum, kami membina."<br/>
                 Pahami alur penanganan kasus dari tingkat Kelas hingga Sekolah.
               </p>
@@ -139,40 +155,42 @@ const PortalTataTertib = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
                 <button 
                   onClick={() => setActiveTab('walikelas')}
-                  className="group flex flex-col items-center p-6 bg-white border-2 border-[#E5E7EB] rounded-xl hover:border-[#049229] hover:shadow-md transition cursor-pointer"
+                  className="group flex flex-col items-center p-6 bg-white border-2 rounded-xl hover:shadow-md transition cursor-pointer"
+                  style={{borderColor: c.border, ':hover': { borderColor: c.primary }}}
                 >
-                  <Users size={40} className="text-[#049229] mb-3 group-hover:scale-110 transition"/>
-                  <h3 className="font-bold text-lg text-[#1A1A1A]">Tingkat Wali Kelas</h3>
+                  <Users size={40} style={{color: c.primary}} className="mb-3 group-hover:scale-110 transition"/>
+                  <h3 className="font-bold text-lg" style={{color: c.text}}>Tingkat Wali Kelas</h3>
                   <p className="text-sm text-gray-500">Penanganan Internal & Kekeluargaan</p>
                 </button>
 
                 <button 
                   onClick={() => setActiveTab('sekolah')}
-                  className="group flex flex-col items-center p-6 bg-white border-2 border-[#E5E7EB] rounded-xl hover:border-[#FF6700] hover:shadow-md transition cursor-pointer"
+                  className="group flex flex-col items-center p-6 bg-white border-2 rounded-xl hover:shadow-md transition cursor-pointer"
+                  style={{borderColor: c.border}}
                 >
-                  <ShieldAlert size={40} className="text-[#FF6700] mb-3 group-hover:scale-110 transition"/>
-                  <h3 className="font-bold text-lg text-[#1A1A1A]">Tingkat Sekolah (PK)</h3>
+                  <ShieldAlert size={40} style={{color: c.accent}} className="mb-3 group-hover:scale-110 transition"/>
+                  <h3 className="font-bold text-lg" style={{color: c.text}}>Tingkat Sekolah (PK)</h3>
                   <p className="text-sm text-gray-500">Penanganan Formal & Sanksi Tegas</p>
                 </button>
               </div>
             </div>
 
             {/* Jadwal Seragam Mini */}
-            <div className="bg-white rounded-xl shadow-sm border border-[#E5E7EB] p-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="bg-white rounded-xl shadow-sm border p-4 flex flex-col md:flex-row items-center justify-between gap-4" style={{borderColor: c.border}}>
               <div className="flex items-center gap-3">
-                <div className="bg-[#E8F5E9] p-2 rounded-lg text-[#049229]">
+                <div className="p-2 rounded-lg" style={{backgroundColor: c.lightPrimary, color: c.primary}}>
                   <UserCheck size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-[#1A1A1A]">Cek Seragam Hari Ini</h3>
+                  <h3 className="font-bold" style={{color: c.text}}>Cek Seragam Hari Ini</h3>
                   <p className="text-xs text-gray-500">Pastikan atribut lengkap!</p>
                 </div>
               </div>
               <div className="flex gap-2 text-xs font-medium overflow-x-auto w-full md:w-auto">
                 <span className="bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">Senin-Selasa: Putih Biru</span>
-                <span className="bg-[#E8F5E9] text-[#049229] px-3 py-1 rounded-full whitespace-nowrap">Rabu: Kotak-kotak</span>
+                <span className="px-3 py-1 rounded-full whitespace-nowrap" style={{backgroundColor: c.lightPrimary, color: c.primary}}>Rabu: Kotak-kotak</span>
                 <span className="bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">Kamis: Kaos Sekolah</span>
-                <span className="bg-[#FFF3E0] text-[#FF6700] px-3 py-1 rounded-full whitespace-nowrap">Jumat: Pramuka</span>
+                <span className="px-3 py-1 rounded-full whitespace-nowrap" style={{backgroundColor: c.lightAccent, color: c.accent}}>Jumat: Pramuka</span>
               </div>
             </div>
           </div>
@@ -180,23 +198,23 @@ const PortalTataTertib = () => {
 
       case 'walikelas':
         return (
-          <div className="space-y-8 animate-fadeIn" style={fontStyle}>
-            <div className="bg-[#E8F5E9] p-6 rounded-2xl border border-[#049229] bg-opacity-20">
-              <h2 className="text-2xl font-bold text-[#049229] mb-2 flex items-center gap-2">
+          <div className="space-y-8 animate-fadeIn" style={{fontFamily}}>
+            <div className="p-6 rounded-2xl border bg-opacity-20" style={{backgroundColor: c.lightPrimary, borderColor: c.primary}}>
+              <h2 className="text-2xl font-bold mb-2 flex items-center gap-2" style={{color: c.primary}}>
                 <Users />
                 Penanganan Tingkat Wali Kelas
               </h2>
-              <p className="text-[#049229]">
+              <p style={{color: c.primary}}>
                 Sebelum masuk ke BK/Sekolah, pelanggaran ringan akan dibina terlebih dahulu oleh Wali Kelas melalui 3 Tahapan Level.
               </p>
             </div>
 
             {/* 5 Kategori */}
             <div>
-              <h3 className="text-lg font-bold text-[#1A1A1A] mb-4">5 Jenis Pelanggaran Kelas</h3>
+              <h3 className="text-lg font-bold mb-4" style={{color: c.text}}>5 Jenis Pelanggaran Kelas</h3>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {violationCategories.map((cat) => (
-                  <div key={cat.id} className={`p-4 rounded-xl border ${cat.color} hover:shadow-md transition bg-white`}>
+                  <div key={cat.id} className={`p-4 rounded-xl border hover:shadow-md transition bg-white ${cat.color}`}>
                     <div className="text-3xl mb-2">{cat.icon}</div>
                     <h4 className="font-bold text-lg mb-1">{cat.title}</h4>
                     <p className="text-sm opacity-90">{cat.desc}</p>
@@ -207,15 +225,15 @@ const PortalTataTertib = () => {
 
             {/* Alur Level 1-3 */}
             <div className="space-y-4">
-              <h3 className="text-lg font-bold text-[#1A1A1A]">Alur Sanksi Berjenjang</h3>
+              <h3 className="text-lg font-bold" style={{color: c.text}}>Alur Sanksi Berjenjang</h3>
               
               <div className="relative border-l-4 border-gray-200 pl-6 ml-2 space-y-8">
                 {/* Level 1 */}
                 <div className="relative">
-                  <div className="absolute -left-[34px] bg-[#ffd700] w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
+                  <div className="absolute -left-[34px] w-6 h-6 rounded-full border-4 border-white shadow-sm" style={{backgroundColor: c.secondary}}></div>
                   <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                    <span className="bg-[#FFFDE7] text-[#ffd700] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 1</span>
-                    <h4 className="font-bold text-[#1A1A1A]">Teguran & Refleksi</h4>
+                    <span className="text-xs font-bold px-2 py-1 rounded mb-2 inline-block" style={{backgroundColor: c.lightSecondary, color: 'black'}}>LEVEL 1</span>
+                    <h4 className="font-bold" style={{color: c.text}}>Teguran & Refleksi</h4>
                     <p className="text-sm text-gray-600 mt-1">Siswa mengisi Lembar Refleksi Diri. Tidak ada surat ke orang tua.</p>
                     <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
                       <Calendar size={12}/> Masa Pantau: 1 Pekan
@@ -225,10 +243,10 @@ const PortalTataTertib = () => {
 
                 {/* Level 2 */}
                 <div className="relative">
-                  <div className="absolute -left-[34px] bg-[#FF6700] w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
+                  <div className="absolute -left-[34px] w-6 h-6 rounded-full border-4 border-white shadow-sm" style={{backgroundColor: c.accent}}></div>
                   <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-                    <span className="bg-[#FFF3E0] text-[#FF6700] text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 2</span>
-                    <h4 className="font-bold text-[#1A1A1A]">Pemberitahuan Orang Tua</h4>
+                    <span className="text-xs font-bold px-2 py-1 rounded mb-2 inline-block" style={{backgroundColor: c.lightAccent, color: c.accent}}>LEVEL 2</span>
+                    <h4 className="font-bold" style={{color: c.text}}>Pemberitahuan Orang Tua</h4>
                     <p className="text-sm text-gray-600 mt-1">Surat pemberitahuan dikirim ke rumah untuk ditandatangani orang tua (Tanpa panggilan).</p>
                     <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
                       <Calendar size={12}/> Masa Pantau: 2 Pekan
@@ -241,7 +259,7 @@ const PortalTataTertib = () => {
                   <div className="absolute -left-[34px] bg-red-500 w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
                   <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
                     <span className="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 3</span>
-                    <h4 className="font-bold text-[#1A1A1A]">Panggilan & Komitmen</h4>
+                    <h4 className="font-bold" style={{color: c.text}}>Panggilan & Komitmen</h4>
                     <p className="text-sm text-gray-600 mt-1">Orang tua WAJIB datang ke sekolah. Menandatangani Perjanjian Komitmen Terakhir.</p>
                     <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
                       <Calendar size={12}/> Masa Pantau: 3 Pekan
@@ -259,8 +277,8 @@ const PortalTataTertib = () => {
 
       case 'sekolah':
         return (
-          <div className="space-y-6 animate-fadeIn" style={fontStyle}>
-             <div className="bg-[#FF6700] text-white p-6 rounded-2xl shadow-lg">
+          <div className="space-y-6 animate-fadeIn" style={{fontFamily}}>
+             <div className="text-white p-6 rounded-2xl shadow-lg" style={{backgroundColor: c.accent}}>
               <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
                 <ShieldAlert />
                 Tingkat Sekolah (Formal)
@@ -272,10 +290,10 @@ const PortalTataTertib = () => {
 
             <div className="grid gap-6 md:grid-cols-2">
               {/* PK 1 */}
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-[#ffd700] shadow-sm">
+              <div className="bg-white p-6 rounded-2xl border-l-4 shadow-sm" style={{borderColor: c.secondary}}>
                 <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-xl font-bold text-[#1A1A1A]">PK-I</h3>
-                   <span className="bg-[#FFFDE7] text-[#ffd700] px-3 py-1 rounded-full text-xs font-bold">Teguran Tertulis</span>
+                   <h3 className="text-xl font-bold" style={{color: c.text}}>PK-I</h3>
+                   <span className="px-3 py-1 rounded-full text-xs font-bold" style={{backgroundColor: c.lightSecondary, color: 'black'}}>Teguran Tertulis</span>
                 </div>
                 <p className="text-gray-600 text-sm mb-4">Diberikan jika Level 3 Wali Kelas gagal, atau pelanggaran disiplin sekolah (Terlambat {'>'}3x).</p>
                 <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
@@ -284,10 +302,10 @@ const PortalTataTertib = () => {
               </div>
 
               {/* PK 2 */}
-              <div className="bg-white p-6 rounded-2xl border-l-4 border-[#FF6700] shadow-sm">
+              <div className="bg-white p-6 rounded-2xl border-l-4 shadow-sm" style={{borderColor: c.accent}}>
                 <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-xl font-bold text-[#1A1A1A]">PK-II</h3>
-                   <span className="bg-[#FFF3E0] text-[#FF6700] px-3 py-1 rounded-full text-xs font-bold">Peringatan Keras</span>
+                   <h3 className="text-xl font-bold" style={{color: c.text}}>PK-II</h3>
+                   <span className="px-3 py-1 rounded-full text-xs font-bold" style={{backgroundColor: c.lightAccent, color: c.accent}}>Peringatan Keras</span>
                 </div>
                 <p className="text-gray-600 text-sm mb-4">Eskalasi dari PK-I. Orang tua dipanggil oleh Kesiswaan/BK.</p>
                 <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
@@ -298,7 +316,7 @@ const PortalTataTertib = () => {
               {/* PK 3 */}
               <div className="bg-white p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
                 <div className="flex justify-between items-center mb-3">
-                   <h3 className="text-xl font-bold text-[#1A1A1A]">PK-III</h3>
+                   <h3 className="text-xl font-bold" style={{color: c.text}}>PK-III</h3>
                    <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-bold">Sidang Komdis</span>
                 </div>
                 <p className="text-gray-600 text-sm mb-4">Kasus ditangani Komisi Disiplin. Orang tua menghadap Wakasek Kesiswaan.</p>
@@ -324,36 +342,37 @@ const PortalTataTertib = () => {
 
       case 'pedoman':
         return (
-          <div className="animate-fadeIn space-y-6" style={fontStyle}>
+          <div className="animate-fadeIn space-y-6" style={{fontFamily}}>
             {selectedChapter ? (
               // Tampilan Detail Bab (Reader Mode)
-              <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] overflow-hidden">
-                 <div className="bg-[#E8F5E9] p-4 border-b border-[#049229] bg-opacity-20 flex items-center gap-2">
+              <div className="bg-white rounded-2xl shadow-sm border overflow-hidden" style={{borderColor: c.border}}>
+                 <div className="p-4 border-b bg-opacity-20 flex items-center gap-2" style={{backgroundColor: c.lightPrimary, borderColor: c.primary}}>
                    <button 
                     onClick={() => setSelectedChapter(null)}
-                    className="p-2 hover:bg-[#049229] hover:bg-opacity-10 rounded-full transition text-[#049229]"
+                    className="p-2 rounded-full transition hover:bg-opacity-10"
+                    style={{color: c.primary}}
                    >
                      <ArrowLeft size={20}/>
                    </button>
-                   <h3 className="font-bold text-[#049229]">{selectedChapter.title}</h3>
+                   <h3 className="font-bold" style={{color: c.primary}}>{selectedChapter.title}</h3>
                  </div>
                  <div className="p-6 md:p-8">
-                   <p className="whitespace-pre-wrap leading-relaxed text-[#1A1A1A] text-base">
+                   <p className="whitespace-pre-wrap leading-relaxed text-base" style={{color: c.text}}>
                      {selectedChapter.content}
                    </p>
                  </div>
-                 <div className="p-4 bg-gray-50 border-t border-[#E5E7EB] text-center">
-                   <button onClick={() => setSelectedChapter(null)} className="text-[#049229] font-medium hover:underline">
+                 <div className="p-4 bg-gray-50 border-t text-center" style={{borderColor: c.border}}>
+                   <button onClick={() => setSelectedChapter(null)} className="font-medium hover:underline" style={{color: c.primary}}>
                      Kembali ke Daftar Isi
                    </button>
                  </div>
               </div>
             ) : (
               // Tampilan Daftar Isi
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-[#E5E7EB]">
+              <div className="bg-white p-8 rounded-2xl shadow-sm border" style={{borderColor: c.border}}>
                 <div className="text-center mb-8">
-                  <FileText size={64} className="mx-auto text-[#049229] mb-4" />
-                  <h2 className="text-2xl font-bold text-[#1A1A1A] mb-2">Buku Saku Digital</h2>
+                  <FileText size={64} className="mx-auto mb-4" style={{color: c.primary}} />
+                  <h2 className="text-2xl font-bold mb-2" style={{color: c.text}}>Buku Saku Digital</h2>
                   <p className="text-gray-600">
                     Baca aturan sekolah langsung di sini atau unduh untuk disimpan.
                   </p>
@@ -364,20 +383,22 @@ const PortalTataTertib = () => {
                     <button 
                       key={chapter.id}
                       onClick={() => setSelectedChapter(chapter)}
-                      className="flex items-center justify-between p-4 rounded-xl border border-[#E5E7EB] hover:bg-[#E8F5E9] hover:border-[#049229] transition group text-left bg-white"
+                      className="flex items-center justify-between p-4 rounded-xl border transition group text-left bg-white"
+                      style={{borderColor: c.border}}
                     >
-                      <span className="font-medium text-[#1A1A1A] group-hover:text-[#049229]">{chapter.title}</span>
-                      <ChevronRight className="text-gray-300 group-hover:text-[#049229]" size={20}/>
+                      <span className="font-medium group-hover:text-opacity-80" style={{color: c.text}}>{chapter.title}</span>
+                      <ChevronRight className="text-gray-300" size={20}/>
                     </button>
                   ))}
                 </div>
                 
-                <div className="flex flex-col md:flex-row justify-center gap-4 border-t border-[#E5E7EB] pt-6">
+                <div className="flex flex-col md:flex-row justify-center gap-4 border-t pt-6" style={{borderColor: c.border}}>
                   <a 
                     href={DRIVE_LINK}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#049229] text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform active:scale-95"
+                    className="text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform active:scale-95"
+                    style={{backgroundColor: c.primary}}
                   >
                     <Download size={20}/>
                     Download File PDF Asli
@@ -397,21 +418,21 @@ const PortalTataTertib = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] text-[#1A1A1A] pb-20 md:pb-0" style={fontStyle}>
+    <div className="min-h-screen pb-20 md:pb-0" style={{backgroundColor: c.bg, color: c.text, fontFamily}}>
       <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <div>
-              <h1 className="font-bold text-lg leading-tight text-[#049229]">SMP YPS SINGKOLE</h1>
+              <h1 className="font-bold text-lg leading-tight" style={{color: c.primary}}>SMP YPS SINGKOLE</h1>
               <p className="text-xs text-gray-500">Portal Tata Tertib</p>
             </div>
           </div>
           
           <nav className="hidden md:flex gap-6">
-            <button onClick={() => setActiveTab('home')} className={`font-medium transition ${activeTab === 'home' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Beranda</button>
-            <button onClick={() => setActiveTab('walikelas')} className={`font-medium transition ${activeTab === 'walikelas' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Wali Kelas</button>
-            <button onClick={() => setActiveTab('sekolah')} className={`font-medium transition ${activeTab === 'sekolah' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Sekolah</button>
-            <button onClick={() => setActiveTab('pedoman')} className={`font-medium transition ${activeTab === 'pedoman' ? 'text-[#049229]' : 'text-gray-500 hover:text-[#049229]'}`}>Buku Saku</button>
+            <button onClick={() => setActiveTab('home')} className={`font-medium transition ${activeTab === 'home' ? '' : 'text-gray-500'}`} style={{color: activeTab === 'home' ? c.primary : undefined}}>Beranda</button>
+            <button onClick={() => setActiveTab('walikelas')} className={`font-medium transition ${activeTab === 'walikelas' ? '' : 'text-gray-500'}`} style={{color: activeTab === 'walikelas' ? c.primary : undefined}}>Wali Kelas</button>
+            <button onClick={() => setActiveTab('sekolah')} className={`font-medium transition ${activeTab === 'sekolah' ? '' : 'text-gray-500'}`} style={{color: activeTab === 'sekolah' ? c.primary : undefined}}>Sekolah</button>
+            <button onClick={() => setActiveTab('pedoman')} className={`font-medium transition ${activeTab === 'pedoman' ? '' : 'text-gray-500'}`} style={{color: activeTab === 'pedoman' ? c.primary : undefined}}>Buku Saku</button>
           </nav>
 
           <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -434,10 +455,10 @@ const PortalTataTertib = () => {
       </main>
 
       <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-between z-40">
-        <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center gap-1 ${activeTab === 'home' ? 'text-[#049229]' : 'text-gray-400'}`}><BookOpen size={20} /><span className="text-xs">Home</span></button>
-        <button onClick={() => setActiveTab('walikelas')} className={`flex flex-col items-center gap-1 ${activeTab === 'walikelas' ? 'text-[#049229]' : 'text-gray-400'}`}><Users size={20} /><span className="text-xs">Kelas</span></button>
-        <button onClick={() => setActiveTab('sekolah')} className={`flex flex-col items-center gap-1 ${activeTab === 'sekolah' ? 'text-[#049229]' : 'text-gray-400'}`}><ShieldAlert size={20} /><span className="text-xs">Sekolah</span></button>
-        <button onClick={() => setActiveTab('pedoman')} className={`flex flex-col items-center gap-1 ${activeTab === 'pedoman' ? 'text-[#049229]' : 'text-gray-400'}`}><FileText size={20} /><span className="text-xs">Buku</span></button>
+        <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center gap-1 ${activeTab === 'home' ? '' : 'text-gray-400'}`} style={{color: activeTab === 'home' ? c.primary : undefined}}><BookOpen size={20} /><span className="text-xs">Home</span></button>
+        <button onClick={() => setActiveTab('walikelas')} className={`flex flex-col items-center gap-1 ${activeTab === 'walikelas' ? '' : 'text-gray-400'}`} style={{color: activeTab === 'walikelas' ? c.primary : undefined}}><Users size={20} /><span className="text-xs">Kelas</span></button>
+        <button onClick={() => setActiveTab('sekolah')} className={`flex flex-col items-center gap-1 ${activeTab === 'sekolah' ? '' : 'text-gray-400'}`} style={{color: activeTab === 'sekolah' ? c.primary : undefined}}><ShieldAlert size={20} /><span className="text-xs">Sekolah</span></button>
+        <button onClick={() => setActiveTab('pedoman')} className={`flex flex-col items-center gap-1 ${activeTab === 'pedoman' ? '' : 'text-gray-400'}`} style={{color: activeTab === 'pedoman' ? c.primary : undefined}}><FileText size={20} /><span className="text-xs">Buku</span></button>
       </div>
     </div>
   );
