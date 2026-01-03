@@ -1,0 +1,462 @@
+import React, { useState, useEffect } from 'react';
+import { BookOpen, ShieldAlert, UserCheck, Calendar, Menu, X, FileText, AlertTriangle, CheckCircle, GraduationCap, Users, ChevronRight, Download, ArrowLeft, ExternalLink, Printer } from 'lucide-react';
+
+const PortalTataTertib = () => {
+  const [activeTab, setActiveTab] = useState('home');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState(null);
+
+  // Efek untuk memuat Google Font Poppins secara dinamis
+  useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+    return () => {
+      document.head.removeChild(link);
+    };
+  }, []);
+
+  // Link Google Drive File Asli
+  const DRIVE_LINK = "https://drive.google.com/file/d/1mOFoNuwdyNelVtM0kekzlH_qerc_WxpI/view?usp=sharing";
+  
+  // BRAND COLORS (Dari Panduan Branding)
+  const colors = {
+    primary: '#049229', // Forest Green
+    secondary: '#ffd700', // Gold
+    accent: '#FF6700', // Pumpkin
+    textDark: '#1A1A1A',
+    textLight: '#FFFFFF',
+    bgLight: '#F9FAFB', // Sangat muda
+    bgPrimaryLight: '#E8F5E9', // Hijau muda untuk aksen
+    bgSecondaryLight: '#FFFDE7', // Kuning muda
+    bgAccentLight: '#FFF3E0', // Oranye muda
+    borderLight: '#E5E7EB',
+  };
+
+  // Style object untuk font family agar aman
+  const fontStyle = { fontFamily: "'Poppins', sans-serif" };
+
+
+  // DATA BUKU PEDOMAN LENGKAP
+  const handbookChapters = [
+    {
+      id: "intro",
+      title: "HALAMAN PENGESAHAN & KATA PENGANTAR",
+      content: `HALAMAN PENGESAHAN\n\nSetelah memperhatikan saran dan masukan segenap guru, murid, dan orang tua murid, maka dengan senantiasa mengharapkan rahmat Tuhan Yang Maha Esa, Pedoman Tata Krama dan Tata Tertib Sekolah SMP YPS Singkole disahkan penggunaannya.\n\nDitetapkan di Sorowako pada tanggal 19 Juli 2024\n\nKetua Komite Sekolah:\nHasni Bahading, S.T.\n\nKepala Sekolah:\nMahmuddin, S.Pd., M.Pd.\n(YPS-301)\n\n------------------------------------------------------------\n\nKATA PENGANTAR\n\nAlhamdulillah, puji dan syukur kita panjatkan kehadirat Tuhan Yang Maha Esa, karena atas tuntunan-Nya, Buku Pedoman Tata Krama dan Tata Tertib (PTK-TT) SMP YPS Singkole dapat diselesaikan dengan baik.\n\nBuku Pedoman Tata Krama dan Tata Tertib SMP YPS Singkole ini ditetapkan dengan tujuan untuk menumbuhkembangkan karakter positif murid yang berdasarkan pada visi sekolah, profil pelajar pancasila, dan tujuan pendidikan nasional. Oleh karena itu, Buku Pedoman Tata Krama dan Tata Tertib ini selanjutnya menjadi pedoman dan acuan bagi murid dalam mengikuti proses pendidikan di SMP YPS Singkole.\n\nKami menyampaikan ucapan terima kasih atas dukungan dan kerjasama sinergis sekolah dan pemangku kepentingan yang senantiasa terjalin dengan baik.\n\nSorowako, 19 Juli 2024\nKepala Sekolah`
+    },
+    {
+      id: "visi",
+      title: "VISI, MISI, TUJUAN & GLOSARIUM",
+      content: `VISI\nMembentuk insan berkarakter yang berguna bagi diri sendiri, orang lain, dan lingkungan sekitarnya.\n\nMISI\nMemberikan layanan pendidikan yang berkualitas bagi semua peserta didik melalui tindakan nyata guru dan orang tua.\n\nTUJUAN\n1. Menciptakan suasana sekolah yang aman dan nyaman.\n2. Membiasakan perilaku tertib dan disiplin.\n3. Membentuk karakter positif berdasarkan nilai dasar sekolah dan profil pelajar pancasila.\n\n------------------------------------------------------------\n\nGLOSARIUM\n\n1. Behavior Contract: kontrak perilaku yang berisi persetujuan atau kesepakatan antara wali kelas/guru BK dengan murid untuk mengubah perilaku tertentu pada murid yang melakukan tindakan indisipliner.\n2. Guru BK: guru bimbingan dan konseling.\n3. Indisipliner: tidak patuh pada peraturan atau melakukan pelanggaran disiplin.\n4. Karakter Positif: bersikap, bertindak, bertingkah laku dan bertutur kata untuk menciptakan iklim dan kultur sekolah yang kondusif.\n5. NAPZA: narkotika, psikotropika, dan bahan adiktif lainnya.\n6. PTK-TT: Pedoman Tata Krama dan Tata Tertib.\n7. Rapat Pleno: rapat dewan guru untuk memutuskan PK-IV (minimal dihadiri 2/3 guru).\n8. Restitusi: proses menciptakan kondisi bagi murid untuk memperbaiki kesalahan mereka.\n9. Whistleblower: jalur pelaporan yang aman dan dapat diakses bagi para korban atau saksi.`
+    },
+    {
+      id: 1,
+      title: "BAB I: PENDAHULUAN",
+      content: `Pendidikan secara aktif mengembangkan potensi diri murid untuk memiliki kekuatan spiritual keagamaan, pengendalian diri, kepribadian, kecerdasan, akhlak mulia serta keterampilan lainnya yang diperlukan dirinya, masyarakat, bangsa dan negara. Pendidikan tidak hanya berfokus pada peningkatan pengetahuan dan keterampilan, tetapi juga pada pembentukan karakter dan kepribadian murid.\n\nPendidikan karakter merupakan usaha menanamkan kebiasaan-kebiasaan yang baik (habituation), sehingga murid mampu bersikap dan bertindak berdasarkan nilai-nilai yang telah menjadi kepribadiannya. Nilai-nilai karakter harus selalu diajarkan, dijadikan kebiasaan, dilatih secara konsisten dan kemudian barulah menjadi karakter bagi murid.\n\nSekolah berperan penting dalam menciptakan lingkungan yang mendukung sikap positif, tanggung jawab, dan integritas. Pedoman Tata Krama dan Tata Tertib ini merupakan acuan dalam menciptakan suasana belajar yang kondusif, memfasilitasi pengembangan karakter, dan memandu murid dalam melaksanakan aktivitas di sekolah. Dengan pedoman ini, diharapkan murid dapat menginternalisasi nilai-nilai seperti kedisiplinan dan rasa hormat, sambil mendapatkan dukungan dari seluruh warga sekolah untuk menjadi individu yang berkontribusi positif bagi sekolah dan masyarakat.`
+    },
+    {
+      id: 2,
+      title: "BAB II: TATA KRAMA (Pasal 1-3)",
+      content: `PASAL 1: PERILAKU TERHADAP GURU DAN PEGAWAI SEKOLAH\n1. Berkomunikasi dengan sopan dan santun.\n2. Menyapa dan memberi salam saat bertemu.\n3. Mengucapkan "maaf" jika melakukan kesalahan, baik disengaja maupun tidak disengaja.\n4. Mengucapkan "tolong" ketika meminta bantuan.\n5. Mengucapkan "terima kasih" setelah menerima bantuan.\n6. Menjaga sikap tubuh seperti berdiri atau duduk dengan baik saat berbicara.\n7. Menghormati privasi dan menjaga kerahasiaan.\n8. Berkomunikasi melalui media memperhatikan: salam, perkenalan, izin, bahasa formal, waktu tepat, jelas, dan berterima kasih.\n\nPASAL 2: INTERAKSI DAN PERILAKU ANTARMURID\n1. Menjunjung tinggi nilai utama YPS: Jujur, Tanggung jawab, Peduli, Berani, Menghormati, Pantang menyerah.\n2. Berkomunikasi dengan sopan dan santun.\n3. Menyapa dan memberi salam saat bertemu.\n4. Mengucapkan "maaf", "tolong", dan "terima kasih".\n5. Menjaga sikap tubuh.\n6. Menghormati privasi.\n7. Menghindari konflik.\n8. Berkontribusi dalam kerja kolaborasi.\n9. Mematuhi adab dalam meminjam/meminta sesuatu.\n10. Memanggil teman sesuai dengan namanya.\n11. Membantu teman yang kesulitan.\n\nPASAL 3: PERILAKU TERHADAP TAMU\n1. Menyambut tamu dengan salam, sapa ramah, dan hormat.\n2. Mendengarkan dengan sopan dan membantu tamu.\n3. Menjaga kenyamanan tamu.\n4. Memberikan informasi jujur dan akurat.\n5. Menjaga rahasia dan privasi.\n6. Melaporkan hal-hal tidak biasa.\n7. Mengucapkan salam perpisahan saat tamu pulang.`
+    },
+    {
+      id: 3,
+      title: "BAB III: TATA TERTIB (Pasal 4-7)",
+      content: `PASAL 4: KEHADIRAN\n1. Jam Masuk: Paling lambat pukul 08.30 WITA. Keterlambatan >3 kali sebulan dikenakan sanksi.\n2. Jam Pulang: Pukul 15.30 WITA. Meninggalkan sekolah maksimal 16.00 WITA.\n3. Izin Meninggalkan Sekolah: Wajib mengisi form izin diketahui wali kelas/guru piket.\n4. Ketidakhadiran: Orang tua memberi info ke wali kelas. Sakit >2 hari wajib lapor Kepala Sekolah/Surat Dokter.\n\nPASAL 5: PAKAIAN DAN IDENTITAS PRIBADI\n1. Seragam Nasional (Senin-Selasa): Putih-Biru, dasi, topi (upacara), sepatu hitam, kaos kaki putih.\n2. Seragam Khas (Rabu): Kemeja Kotak-Kotak Biru.\n3. Seragam Kaos (Kamis): Kaos Sekolah + Celana/Rok Biru, kaos kaki hitam.\n4. Seragam Pramuka (Jumat): Lengkap dengan atribut.\n5. Aturan Pakai: Baju dimasukkan, ikat pinggang hitam, tidak ketat/tembus pandang, muslimah berjilbab.\n6. Kartu Pelajar: Wajib dikenakan selama di sekolah.\n\nPASAL 6: PENAMPILAN\n1. Umum: Kuku pendek tanpa warna, rambut tanpa warna, bebas tato.\n2. Laki-laki: Rambut tidak gondrong (max 7cm atas), tidak kena kerah/telinga, tidak bermotif. Bebas aksesoris (kecuali jam tangan).\n3. Perempuan: Riasan/skincare secukupnya, aksesoris wajar (anting/jam), rambut minimal sebahu (jika tidak berjilbab).\n\nPASAL 7: BARANG BAWAAN\n1. Wajib membawa: Chromebook/Laptop (@yps.sch.id), buku pelajaran, alat tulis, perlengkapan ibadah.\n2. Barang Elektronik Lain (HP): Wajib izin wali kelas, dititipkan di kantor/wali kelas saat tiba, diambil saat pulang.\n3. Dilarang membawa uang jajan >Rp50.000.\n4. Barang sitaan: Dikembalikan setelah masa sita selesai dengan Berita Acara (diambil orang tua). Barang terlarang dimusnahkan.`
+    },
+    {
+      id: 4,
+      title: "BAB IV: KEAMANAN (Pasal 8-13)",
+      content: `PASAL 8: KEKERASAN DAN PERUNDUNGAN\nHindari kekerasan Fisik, Verbal, Nonverbal, dan di Dunia Maya (Cyberbullying).\n\nPASAL 9: PELECEHAN DAN KEKERASAN SEKSUAL\nHindari pelecehan Fisik, Verbal, Nonverbal, dan di Dunia Maya.\n\nPASAL 10: INTOLERANSI\nHindari perilaku yang tidak menghormati perbedaan Suku, Agama, Ras, dan Antargolongan.\n\nPASAL 11: PENCURIAN DAN KECURANGAN\nDilarang: Mencuri, Plagiarisme, Pencurian Identitas, Menyontek, Menjadi Joki.\n\nPASAL 12: NAPZA\nHindari Narkotika, Psikotropika, Zat Adiktif (Rokok, Vape, Alkohol, dll).\n\nPASAL 13: PORNOGRAFI DAN PORNOAKSI\nDilarang menyimpan/menyebar konten porno, atau melakukan gerakan erotis/sensual.`
+    },
+    {
+      id: 5,
+      title: "BAB V: SARANA PRASARANA (Pasal 14-15)",
+      content: `PASAL 14: PENGGUNAAN SARANA\n1. Gunakan sesuai fungsi dan prosedur.\n2. Bertanggung jawab atas kebersihan/kerapian.\n3. Budayakan antre.\n\nPASAL 15: PERILAKU HIDUP BERSIH DAN SEHAT (PHBS)\n1. Lingkungan: Buang sampah pada tempatnya, aktif piket kelas, hemat energi.\n2. Diri: Cuci tangan, mandi teratur, gosok gigi, potong kuku, ganti pakaian tiap hari, pakai masker jika sakit.`
+    },
+    {
+      id: 6,
+      title: "BAB VI: PERANGKAT ELEKTRONIK (Pasal 16-17)",
+      content: `PASAL 16: PENGGUNAAN PERANGKAT\n1. Chromebook/Laptop sekolah wajib dibawa.\n2. Perangkat lain (HP) harus izin wali kelas dan dititipkan.\n3. Hanya digunakan untuk pembelajaran.\n4. Jaga kerahasiaan sandi.\n5. Dilarang memotret/merekam/menyebar foto video orang lain tanpa izin.\n\nPASAL 17: TRANSAKSI ELEKTRONIK\nMemperhatikan budaya sekolah dan UU ITE.`
+    },
+    {
+      id: 7,
+      title: "BAB VII: UPACARA & IBADAH (Pasal 18-20)",
+      content: `PASAL 18: UPACARA BENDERA\nWajib mengikuti setiap Senin dengan tertib dan seragam lengkap.\n\nPASAL 19: HARI BESAR NASIONAL/KEAGAMAAN\nWajib mengikuti dengan pakaian yang ditetapkan.\n\nPASAL 20: IBADAH HARIAN\n1. Mengikuti ibadah sesuai agama.\n2. Membawa perlengkapan ibadah.\n3. Menjaga ketertiban.`
+    },
+    {
+      id: 8,
+      title: "BAB VIII: PEMBINAAN KARAKTER (Pasal 21-23)",
+      content: `PASAL 21: PELAPORAN\nSekolah menyediakan jalur Whistleblower (rahasia) untuk pelaporan pelanggaran.\n\nPASAL 22: PROSEDUR PEMBINAAN KARAKTER\n\n1. PK-I (TEGURAN TERTULIS I)\n- Oleh: Wali Kelas.\n- Syarat: Melanggar >3x.\n- Sanksi: Behavior Contract.\n- Masa Pantau: 1 Bulan (Diputihkan jika bersih).\n\n2. PK-II (PERINGATAN TERTULIS II)\n- Oleh: Wali Kelas & Guru BK.\n- Syarat: Mengulang PK-I 3x.\n- Sanksi: Panggilan Orang Tua, Tugas Ketrampilan (Resume buku/Adiwiyata) 2 hari.\n- Masa Pantau: 2 Bulan.\n\n3. PK-III (PERINGATAN TERTULIS III)\n- Oleh: Komisi Disiplin.\n- Syarat: Melanggar saat masa PK-II.\n- Sanksi: Investigasi Komdis, Tugas Proyek/Sosial 3-5 hari.\n- Masa Pantau: 3 Bulan.\n\n4. PK-IV (PEMBINAAN KHUSUS / KEMBALI KE ORANG TUA)\n- Oleh: Kepala Sekolah (Hasil Rapat Pleno).\n- Syarat: Melanggar saat masa PK-III.\n- Sanksi A: Pembinaan Khusus (Skorsing Luar) 1 bulan.\n- Sanksi B: Drop Out (Dikeluarkan).\n\nPASAL 23: KEPUTUSAN\nKeputusan bersifat mengikat dan tidak dapat diganggu gugat.`
+    },
+    {
+      id: "lampiran",
+      title: "LAMPIRAN-LAMPIRAN",
+      content: `LAMPIRAN 1: SERAGAM NASIONAL\n- Putra: Kemeja putih, celana biru, dasi, sepatu hitam.\n- Putri: Kemeja putih, rok-celana biru, jilbab putih (muslim).\n\nLAMPIRAN 2: SERAGAM KHAS (RABU)\n- Kemeja kotak-kotak biru, celana/rok biru, jilbab biru.\n\nLAMPIRAN 3: SERAGAM PRAMUKA\n- Coklat muda-tua, setangan leher merah putih, baret (putra)/topi (putri).\n\nLAMPIRAN 4: IZIN MENINGGALKAN SEKOLAH\n(Format Surat Izin)\n\nLAMPIRAN 5: FORMAT PK-I\n(Surat Teguran Tertulis I - Wali Kelas)\n\nLAMPIRAN 6: FORMAT PK-II\n(Surat Peringatan Tertulis II - Panggilan Ortu)\n\nLAMPIRAN 7: FORMAT PK-III\n(Surat Peringatan III - Komdis)\n\nLAMPIRAN 8: FORMAT PK-IV\n(Surat Pembinaan Khusus)\n\nLAMPIRAN 9: FORMAT DROP OUT\n(Surat Keputusan Pengembalian ke Orang Tua)\n\nLAMPIRAN 10: PEMUTIHAN PK-I/II\n(Surat Keterangan Pemutihan Sanksi)\n\nLAMPIRAN 11: PEMUTIHAN PK-III/IV\n(Surat Keterangan Pemutihan Sanksi)`
+    }
+  ];
+
+  // 5 Kategori Pelanggaran
+  const violationCategories = [
+    {
+      id: 'sopan',
+      title: 'Sopan Santun',
+      icon: '🙏',
+      desc: 'Berbicara kasar, membantah guru, sikap tubuh tidak sopan.',
+      color: 'bg-emerald-100 text-emerald-800 border-emerald-200'
+    },
+    {
+      id: 'tanggungjawab',
+      title: 'Tanggung Jawab',
+      icon: '🧹',
+      desc: 'Tidak piket, membuang sampah sembarangan, merusak fasilitas.',
+      color: 'bg-blue-100 text-blue-800 border-blue-200'
+    },
+    {
+      id: 'peduli',
+      title: 'Peduli (Anti-Bullying)',
+      icon: '🤝',
+      desc: 'Mengejek teman, menyembunyikan barang, mengucilkan.',
+      color: 'bg-purple-100 text-purple-800 border-purple-200'
+    },
+    {
+      id: 'disiplin',
+      title: 'Disiplin & Ketertiban',
+      icon: '⏰',
+      desc: 'Terlambat, main HP tanpa izin, ribut di kelas.',
+      color: 'bg-orange-100 text-orange-800 border-orange-200'
+    },
+    {
+      id: 'jujur',
+      title: 'Kejujuran',
+      icon: '🛡️',
+      desc: 'Menyontek, berbohong, memalsukan tanda tangan.',
+      color: 'bg-rose-100 text-rose-800 border-rose-200'
+    }
+  ];
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'home':
+        return (
+          <div className="space-y-8 animate-fadeIn" style={fontStyle}>
+            <div className={`text-center space-y-4 py-10 bg-gradient-to-b from-white to-[${colors.bgPrimaryLight}] rounded-2xl p-6 border border-[${colors.borderLight}] shadow-sm`}>
+              <h1 className={`text-3xl md:text-4xl font-bold text-[${colors.primary}]`}>
+                Portal Tata Tertib Siswa
+              </h1>
+              <h2 className={`text-xl text-[${colors.textDark}] font-semibold`}>SMP YPS SINGKOLE</h2>
+              <p className={`text-[${colors.textDark}] opacity-80 max-w-2xl mx-auto mt-4`}>
+                "Kami tidak menghukum, kami membina."<br/>
+                Pahami alur penanganan kasus dari tingkat Kelas hingga Sekolah.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 max-w-2xl mx-auto">
+                <button 
+                  onClick={() => setActiveTab('walikelas')}
+                  className={`group flex flex-col items-center p-6 bg-white border-2 border-[${colors.borderLight}] rounded-xl hover:border-[${colors.primary}] hover:shadow-md transition cursor-pointer`}
+                >
+                  <Users size={40} className={`text-[${colors.primary}] mb-3 group-hover:scale-110 transition`}/>
+                  <h3 className={`font-bold text-lg text-[${colors.textDark}]`}>Tingkat Wali Kelas</h3>
+                  <p className="text-sm text-gray-500">Penanganan Internal & Kekeluargaan</p>
+                </button>
+
+                <button 
+                  onClick={() => setActiveTab('sekolah')}
+                  className={`group flex flex-col items-center p-6 bg-white border-2 border-[${colors.borderLight}] rounded-xl hover:border-[${colors.accent}] hover:shadow-md transition cursor-pointer`}
+                >
+                  <ShieldAlert size={40} className={`text-[${colors.accent}] mb-3 group-hover:scale-110 transition`}/>
+                  <h3 className={`font-bold text-lg text-[${colors.textDark}]`}>Tingkat Sekolah (PK)</h3>
+                  <p className="text-sm text-gray-500">Penanganan Formal & Sanksi Tegas</p>
+                </button>
+              </div>
+            </div>
+
+            {/* Jadwal Seragam Mini */}
+            <div className={`bg-white rounded-xl shadow-sm border border-[${colors.borderLight}] p-4 flex flex-col md:flex-row items-center justify-between gap-4`}>
+              <div className="flex items-center gap-3">
+                <div className={`bg-[${colors.bgPrimaryLight}] p-2 rounded-lg text-[${colors.primary}]`}>
+                  <UserCheck size={24} />
+                </div>
+                <div>
+                  <h3 className={`font-bold text-[${colors.textDark}]`}>Cek Seragam Hari Ini</h3>
+                  <p className="text-xs text-gray-500">Pastikan atribut lengkap!</p>
+                </div>
+              </div>
+              <div className="flex gap-2 text-xs font-medium overflow-x-auto w-full md:w-auto">
+                <span className="bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">Senin-Selasa: Putih Biru</span>
+                <span className={`bg-[${colors.bgPrimaryLight}] text-[${colors.primary}] px-3 py-1 rounded-full whitespace-nowrap`}>Rabu: Kotak-kotak</span>
+                <span className="bg-gray-100 px-3 py-1 rounded-full whitespace-nowrap">Kamis: Kaos Sekolah</span>
+                <span className={`bg-[${colors.bgAccentLight}] text-[${colors.accent}] px-3 py-1 rounded-full whitespace-nowrap`}>Jumat: Pramuka</span>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'walikelas':
+        return (
+          <div className="space-y-8 animate-fadeIn" style={fontStyle}>
+            <div className={`bg-[${colors.bgPrimaryLight}] p-6 rounded-2xl border border-[${colors.primary}] bg-opacity-20`}>
+              <h2 className={`text-2xl font-bold text-[${colors.primary}] mb-2 flex items-center gap-2`}>
+                <Users />
+                Penanganan Tingkat Wali Kelas
+              </h2>
+              <p className={`text-[${colors.primary}]`}>
+                Sebelum masuk ke BK/Sekolah, pelanggaran ringan akan dibina terlebih dahulu oleh Wali Kelas melalui 3 Tahapan Level.
+              </p>
+            </div>
+
+            {/* 5 Kategori */}
+            <div>
+              <h3 className={`text-lg font-bold text-[${colors.textDark}] mb-4`}>5 Jenis Pelanggaran Kelas</h3>
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {violationCategories.map((cat) => (
+                  <div key={cat.id} className={`p-4 rounded-xl border ${cat.color} hover:shadow-md transition bg-white`}>
+                    <div className="text-3xl mb-2">{cat.icon}</div>
+                    <h4 className="font-bold text-lg mb-1">{cat.title}</h4>
+                    <p className="text-sm opacity-90">{cat.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Alur Level 1-3 */}
+            <div className="space-y-4">
+              <h3 className={`text-lg font-bold text-[${colors.textDark}]`}>Alur Sanksi Berjenjang</h3>
+              
+              <div className="relative border-l-4 border-gray-200 pl-6 ml-2 space-y-8">
+                {/* Level 1 */}
+                <div className="relative">
+                  <div className={`absolute -left-[34px] bg-[${colors.secondary}] w-6 h-6 rounded-full border-4 border-white shadow-sm`}></div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                    <span className={`bg-[${colors.bgSecondaryLight}] text-[${colors.secondary}] text-xs font-bold px-2 py-1 rounded mb-2 inline-block`}>LEVEL 1</span>
+                    <h4 className={`font-bold text-[${colors.textDark}]`}>Teguran & Refleksi</h4>
+                    <p className="text-sm text-gray-600 mt-1">Siswa mengisi Lembar Refleksi Diri. Tidak ada surat ke orang tua.</p>
+                    <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
+                      <Calendar size={12}/> Masa Pantau: 1 Pekan
+                    </div>
+                  </div>
+                </div>
+
+                {/* Level 2 */}
+                <div className="relative">
+                  <div className={`absolute -left-[34px] bg-[${colors.accent}] w-6 h-6 rounded-full border-4 border-white shadow-sm`}></div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                    <span className={`bg-[${colors.bgAccentLight}] text-[${colors.accent}] text-xs font-bold px-2 py-1 rounded mb-2 inline-block`}>LEVEL 2</span>
+                    <h4 className={`font-bold text-[${colors.textDark}]`}>Pemberitahuan Orang Tua</h4>
+                    <p className="text-sm text-gray-600 mt-1">Surat pemberitahuan dikirim ke rumah untuk ditandatangani orang tua (Tanpa panggilan).</p>
+                    <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
+                      <Calendar size={12}/> Masa Pantau: 2 Pekan
+                    </div>
+                  </div>
+                </div>
+
+                {/* Level 3 */}
+                <div className="relative">
+                  <div className="absolute -left-[34px] bg-red-500 w-6 h-6 rounded-full border-4 border-white shadow-sm"></div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
+                    <span className="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded mb-2 inline-block">LEVEL 3</span>
+                    <h4 className={`font-bold text-[${colors.textDark}]`}>Panggilan & Komitmen</h4>
+                    <p className="text-sm text-gray-600 mt-1">Orang tua WAJIB datang ke sekolah. Menandatangani Perjanjian Komitmen Terakhir.</p>
+                    <div className="mt-2 text-xs font-semibold text-gray-500 flex items-center gap-1">
+                      <Calendar size={12}/> Masa Pantau: 3 Pekan
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className={`bg-red-50 p-4 rounded-lg border border-red-200 text-center text-red-800 text-sm font-semibold`}>
+                ⚠️ Jika Level 3 dilanggar, kasus otomatis naik ke Tingkat Sekolah (PK-I)
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'sekolah':
+        return (
+          <div className="space-y-6 animate-fadeIn" style={fontStyle}>
+             <div className={`bg-[${colors.accent}] text-white p-6 rounded-2xl shadow-lg`}>
+              <h2 className="text-2xl font-bold mb-2 flex items-center gap-2">
+                <ShieldAlert />
+                Tingkat Sekolah (Formal)
+              </h2>
+              <p className="opacity-90">
+                Ditangani oleh Komisi Disiplin & Kesiswaan. Pelanggaran berat atau limpahan dari Wali Kelas yang tidak tuntas.
+              </p>
+            </div>
+
+            <div className="grid gap-6 md:grid-cols-2">
+              {/* PK 1 */}
+              <div className={`bg-white p-6 rounded-2xl border-l-4 border-[${colors.secondary}] shadow-sm`}>
+                <div className="flex justify-between items-center mb-3">
+                   <h3 className={`text-xl font-bold text-[${colors.textDark}]`}>PK-I</h3>
+                   <span className={`bg-[${colors.bgSecondaryLight}] text-[${colors.secondary}] px-3 py-1 rounded-full text-xs font-bold`}>Teguran Tertulis</span>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">Diberikan jika Level 3 Wali Kelas gagal, atau pelanggaran disiplin sekolah (Terlambat {'>'}3x).</p>
+                <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
+                  <strong>Sanksi:</strong> Behavior Contract & Pembinaan Guru BK.
+                </div>
+              </div>
+
+              {/* PK 2 */}
+              <div className={`bg-white p-6 rounded-2xl border-l-4 border-[${colors.accent}] shadow-sm`}>
+                <div className="flex justify-between items-center mb-3">
+                   <h3 className={`text-xl font-bold text-[${colors.textDark}]`}>PK-II</h3>
+                   <span className={`bg-[${colors.bgAccentLight}] text-[${colors.accent}] px-3 py-1 rounded-full text-xs font-bold`}>Peringatan Keras</span>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">Eskalasi dari PK-I. Orang tua dipanggil oleh Kesiswaan/BK.</p>
+                <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
+                  <strong>Sanksi:</strong> Tugas Literasi/Adiwiyata selama 2 hari.
+                </div>
+              </div>
+
+              {/* PK 3 */}
+              <div className="bg-white p-6 rounded-2xl border-l-4 border-red-500 shadow-sm">
+                <div className="flex justify-between items-center mb-3">
+                   <h3 className={`text-xl font-bold text-[${colors.textDark}]`}>PK-III</h3>
+                   <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs font-bold">Sidang Komdis</span>
+                </div>
+                <p className="text-gray-600 text-sm mb-4">Kasus ditangani Komisi Disiplin. Orang tua menghadap Wakasek Kesiswaan.</p>
+                <div className="bg-gray-50 p-3 rounded text-xs text-gray-500">
+                  <strong>Sanksi:</strong> Skorsing edukatif 3-5 hari di sekolah.
+                </div>
+              </div>
+
+              {/* PK 4 */}
+              <div className="bg-gray-800 text-white p-6 rounded-2xl border-l-4 border-red-700 shadow-sm">
+                <div className="flex justify-between items-center mb-3">
+                   <h3 className="text-xl font-bold">PK-IV</h3>
+                   <span className="bg-red-700 text-white px-3 py-1 rounded-full text-xs font-bold">FINAL</span>
+                </div>
+                <p className="text-gray-300 text-sm mb-4">Keputusan Rapat Pleno Dewan Guru.</p>
+                <div className="bg-gray-700 p-3 rounded text-xs text-gray-300">
+                  <strong>Sanksi:</strong> Dikembalikan kepada Orang Tua (Drop Out) atau Skorsing Luar 1 Bulan.
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'pedoman':
+        return (
+          <div className="animate-fadeIn space-y-6" style={fontStyle}>
+            {selectedChapter ? (
+              // Tampilan Detail Bab (Reader Mode)
+              <div className={`bg-white rounded-2xl shadow-sm border border-[${colors.borderLight}] overflow-hidden`}>
+                 <div className={`bg-[${colors.bgPrimaryLight}] p-4 border-b border-[${colors.primary}] bg-opacity-20 flex items-center gap-2`}>
+                   <button 
+                    onClick={() => setSelectedChapter(null)}
+                    className={`p-2 hover:bg-[${colors.primary}] hover:bg-opacity-10 rounded-full transition text-[${colors.primary}]`}
+                   >
+                     <ArrowLeft size={20}/>
+                   </button>
+                   <h3 className={`font-bold text-[${colors.primary}]`}>{selectedChapter.title}</h3>
+                 </div>
+                 <div className="p-6 md:p-8">
+                   <p className={`whitespace-pre-wrap leading-relaxed text-[${colors.textDark}] text-base`}>
+                     {selectedChapter.content}
+                   </p>
+                 </div>
+                 <div className={`p-4 bg-gray-50 border-t border-[${colors.borderLight}] text-center`}>
+                   <button onClick={() => setSelectedChapter(null)} className={`text-[${colors.primary}] font-medium hover:underline`}>
+                     Kembali ke Daftar Isi
+                   </button>
+                 </div>
+              </div>
+            ) : (
+              // Tampilan Daftar Isi
+              <div className={`bg-white p-8 rounded-2xl shadow-sm border border-[${colors.borderLight}]`}>
+                <div className="text-center mb-8">
+                  <FileText size={64} className={`mx-auto text-[${colors.primary}] mb-4`} />
+                  <h2 className={`text-2xl font-bold text-[${colors.textDark}] mb-2`}>Buku Saku Digital</h2>
+                  <p className="text-gray-600">
+                    Baca aturan sekolah langsung di sini atau unduh untuk disimpan.
+                  </p>
+                </div>
+
+                <div className="grid gap-3 mb-8">
+                  {handbookChapters.map((chapter) => (
+                    <button 
+                      key={chapter.id}
+                      onClick={() => setSelectedChapter(chapter)}
+                      className={`flex items-center justify-between p-4 rounded-xl border border-[${colors.borderLight}] hover:bg-[${colors.bgPrimaryLight}] hover:border-[${colors.primary}] transition group text-left bg-white`}
+                    >
+                      <span className={`font-medium text-[${colors.textDark}] group-hover:text-[${colors.primary}]`}>{chapter.title}</span>
+                      <ChevronRight className={`text-gray-300 group-hover:text-[${colors.primary}]`} size={20}/>
+                    </button>
+                  ))}
+                </div>
+                
+                <div className={`flex flex-col md:flex-row justify-center gap-4 border-t border-[${colors.borderLight}] pt-6`}>
+                  <a 
+                    href={DRIVE_LINK}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`bg-[${colors.primary}] text-white px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transform active:scale-95`}
+                  >
+                    <Download size={20}/>
+                    Download File PDF Asli
+                  </a>
+                </div>
+                <p className="text-xs text-center text-gray-400 mt-4">
+                  *Link ini akan membuka file PDF resmi di Google Drive.
+                </p>
+              </div>
+            )}
+          </div>
+        );
+
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className={`min-h-screen bg-[${colors.bgLight}] text-[${colors.textDark}] pb-20 md:pb-0`} style={fontStyle}>
+      <header className="bg-white shadow-sm sticky top-0 z-50">
+        <div className="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            {/* LOGO & KOTAK YPS DIHAPUS */}
+            <div>
+              <h1 className={`font-bold text-lg leading-tight text-[${colors.primary}]`}>SMP YPS SINGKOLE</h1>
+              <p className="text-xs text-gray-500">Portal Tata Tertib</p>
+            </div>
+          </div>
+          
+          <nav className="hidden md:flex gap-6">
+            <button onClick={() => setActiveTab('home')} className={`font-medium transition ${activeTab === 'home' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Beranda</button>
+            <button onClick={() => setActiveTab('walikelas')} className={`font-medium transition ${activeTab === 'walikelas' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Wali Kelas</button>
+            <button onClick={() => setActiveTab('sekolah')} className={`font-medium transition ${activeTab === 'sekolah' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Sekolah</button>
+            <button onClick={() => setActiveTab('pedoman')} className={`font-medium transition ${activeTab === 'pedoman' ? `text-[${colors.primary}]` : 'text-gray-500 hover:text-[${colors.primary}]'}`}>Buku Saku</button>
+          </nav>
+
+          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+        
+        {isMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-100 p-4 space-y-2">
+            <button onClick={() => {setActiveTab('home'); setIsMenuOpen(false)}} className="block w-full text-left p-2 rounded hover:bg-gray-50">Beranda</button>
+            <button onClick={() => {setActiveTab('walikelas'); setIsMenuOpen(false)}} className="block w-full text-left p-2 rounded hover:bg-gray-50">Wali Kelas</button>
+            <button onClick={() => {setActiveTab('sekolah'); setIsMenuOpen(false)}} className="block w-full text-left p-2 rounded hover:bg-gray-50">Sekolah</button>
+            <button onClick={() => {setActiveTab('pedoman'); setIsMenuOpen(false)}} className="block w-full text-left p-2 rounded hover:bg-gray-50">Buku Saku</button>
+          </div>
+        )}
+      </header>
+
+      <main className="max-w-4xl mx-auto px-4 py-8">
+        {renderContent()}
+      </main>
+
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex justify-between z-40">
+        <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center gap-1 ${activeTab === 'home' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><BookOpen size={20} /><span className="text-xs">Home</span></button>
+        <button onClick={() => setActiveTab('walikelas')} className={`flex flex-col items-center gap-1 ${activeTab === 'walikelas' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><Users size={20} /><span className="text-xs">Kelas</span></button>
+        <button onClick={() => setActiveTab('sekolah')} className={`flex flex-col items-center gap-1 ${activeTab === 'sekolah' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><ShieldAlert size={20} /><span className="text-xs">Sekolah</span></button>
+        <button onClick={() => setActiveTab('pedoman')} className={`flex flex-col items-center gap-1 ${activeTab === 'pedoman' ? `text-[${colors.primary}]` : 'text-gray-400'}`}><FileText size={20} /><span className="text-xs">Buku</span></button>
+      </div>
+    </div>
+  );
+};
+
+export default PortalTataTertib;
